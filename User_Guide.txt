@@ -1,0 +1,45 @@
+==========================================================================
+==========================================================================
+MODELADOR NUMÉRICO DE FLUJO DE FLUIDOS EN MEDIOS POROSOS, MEDIANTE LAS
+ECUACIONES DE CALOR Y DE VORTICIDAD
+
+POR: Sánchez Castillo Cristo Nephtalí
+POSGRADO EN CIENCIAS DE LA TIERRA, UNAM
+
+==========================================================================
+==========================================================================
+
+Guía de usuario
+El usuario, que desea usar el algoritmo en su forma nativa, debe seguir 
+los pasos para realizar la simulación:
+1.	El usuario modifica los datos numéricos en el script del 
+algoritmo. Dichos datos incluyen los valores de las propiedades del medio 
+poroso y del fluido.
+	a.	La variable “start” indica la etapa en la que se comenzará
+	la simulación (1 para indicar que se desea hacer la primera etapa 
+	de la simulación, o un valor diferente para indicar que se desea 
+	continuar con la simulación en una etapa posterior). NOTA: En caso 
+	de etapas posteriores de simulación se requiere un archivo de 
+	entrada que indique el estado final (temperatura y función corriente) 
+	de una corrida anterior, el cual debe llamarse “SaveIncon.mat”
+	b.	Además, el modelo se puede adaptar tanto a modelos con litologías 
+	heterogéneas como con litologías heterogéneas. Por ello, es obligatorio ingresar 
+	una disposición litológica (creada manualmente o de forma automática) el cual debe 
+	contenerse en un archivo llamado “Heterogeneidad”. Dicho modelo debe concordar con
+	 el número de nodos en “x” y “y” deseados para el modelo numérico. En caso de modelar 
+	un medio homogéneo, se aconseja poner los parámetros de propiedades iguales para 
+	cada litología.
+2.	El usuario, una vez que ingrese los datos, debe pulsar el ícono Run en el editor 
+de script (MATLAB) o bien llamando por el nombre “calorconvvort_principal” en la 
+ventana de comandos de MATLAB. El algoritmo procederá a leer los datos y generar 
+el modelo.
+3.	Una vez generado el modelo (y las matrices A y B para ambas ecuaciones: calor y 
+vorticidad) se desplegará una ventana “figure” con los estados iniciales de la simulación. 
+Se pausa la ejecución para dar oportunidad al usuario de ver detenidamente. Para proceder 
+con la simulación, el usuario debe pulsar cualquier tecla.
+4.	Se procede con la simulación. Tras terminar de simular la primera mitad de pasos de 
+tiempo (dependiendo del número deseado por el usuario), el usuario debe pulsar cualquier 
+tecla para continuar con la segunda mitad de la simulación.
+5.	Al finalizar la simulación, se le notificará al usuario que la simulación ha 
+finalizado. El estado final de la simulación se guardará en el archivo “SaveIncon.mat” para 
+usarlo en próximas corridas.
